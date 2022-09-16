@@ -4,3 +4,7 @@ from django.http import HttpResponse
 # Create your views here.
 def detail(request):
     return HttpResponse("Hello, world. You're at the prices detail page.")
+
+
+def summary(request):
+    return HttpResponse("Hello, world. You're at the prices summary page.")
