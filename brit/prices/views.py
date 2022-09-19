@@ -16,10 +16,11 @@ def summary(request):
 
 
 def new_item(request):
+    import pdb; pdb.set_trace()
     if request.POST:
         item_name = request.POST['name']
         item_price = request.POST['price']
-        if not item_name or item_price:
+        if not item_name or not item_price:
             return render(request, 'new_item.html', {
                 'error_message': "You must enter item name and price",
             })
