@@ -6,7 +6,7 @@ from .models import Item
 
 # Create your views here.
 def items(request):
-    items = Item.objects.all()
+    items = Item.objects.all().order_by('name')
     return render(request, 'items.html', {'items': items})
 
 
@@ -16,8 +16,7 @@ def summary(request):
 
 
 def new_item(request):
-    import pdb; pdb.set_trace()
-    if request.POST:
+    if request.method == 'POST':
         item_name = request.POST['name']
         item_price = request.POST['price']
         if not item_name or not item_price:
@@ -29,5 +28,3 @@ def new_item(request):
         new_item.save()
         return HttpResponseRedirect('items')
     return render(request, 'new_item.html') 
-
-
